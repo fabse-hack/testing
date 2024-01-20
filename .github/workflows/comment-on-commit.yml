@@ -19,7 +19,9 @@ jobs:
           node-version: 14
 
       - name: Install Dependencies
-        run: npm install
+        run: |
+          npm install
+          npm install axios
 
       - name: Comment on Commit
         run: node .github/scripts/comment-on-commit.js
