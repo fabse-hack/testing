@@ -13,18 +13,16 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-          node-version: 14
+          python-version: '3.x'
 
       - name: Install Dependencies
         run: |
-          npm install
-          npm install axios
+          pip install requests
 
       - name: Comment on Commit
-        run: node .github/scripts/comment-on-commit.js
+        run: python .github/scripts/comment_on_commit.py
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
